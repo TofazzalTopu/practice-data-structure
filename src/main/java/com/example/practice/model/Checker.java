@@ -1,8 +1,9 @@
 package com.example.practice.model;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class Checker implements Comparator<Player> {
+public class Checker implements Comparator<Player>, Serializable, Cloneable {
 
    @Override
    public int compare(Player o1, Player o2) {
