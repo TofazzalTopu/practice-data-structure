@@ -1,7 +1,6 @@
-package com.example.practice.model.array;
+package com.example.practice.model.searchAndSort.binary;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 public class BinarySearch {
