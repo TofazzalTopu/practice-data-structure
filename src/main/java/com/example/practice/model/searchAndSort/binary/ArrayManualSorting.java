@@ -1,4 +1,4 @@
-package com.example.practice.model.array;
+package com.example.practice.model.searchAndSort.binary;
 
 import java.util.Arrays;
 

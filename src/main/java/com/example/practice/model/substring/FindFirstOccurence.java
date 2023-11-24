@@ -11,11 +11,27 @@ public class FindFirstOccurence {
 
    public static void main(String[] args) {
 //      maxSetSize();
-      System.out.println(isSameText("A2Le", "2pL1"));
-      System.out.println(isSameText("a10", "10a"));
-      System.out.println(isSameText("ba1", "1Ad"));
+      System.out.println(isSame("a10", "10a"));
+//      System.out.println(isSameText("A2Le", "2pL1"));
+//      System.out.println(isSameText("a10", "10a"));
+//      System.out.println(isSameText("ba1", "1Ad"));
 //      strStr("hello", "ll");
    }
+
+   //isSameText contains in two strings
+   public static boolean isSame(String s, String t) {
+      List<String> ls = new ArrayList<>();
+      for(int i =0; i < s.length(); i++){
+         ls.add(String.valueOf(s.toLowerCase().charAt(i)));
+      }
+
+      for(int i = 0; i < t.length(); i++){
+         if(!ls.contains(String.valueOf(s.toLowerCase().charAt(i)))) return false;
+      }
+
+      return true;
+   }
+
    public static boolean isSameText(String s, String t) {
       int LS = countLength(s);
       int LT = countLength(t);

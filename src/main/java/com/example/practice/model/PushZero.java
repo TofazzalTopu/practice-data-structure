@@ -37,11 +37,14 @@ public class PushZero {
       while (count < n)
          arr[count++] = 1;
    }
+
+   int test = 0;
    /*Driver function to check for above functions*/
    public static void main (String[] args) {
       //      int arr[] = {1, 9, 8, 4, 0, 0, 2, 7, 0, 6, 0, 9};
       int arr[] = { 1, 1, 1, 1, 0, 0, 2, 7, 0, 6, 0, 9 };
       int n = arr.length;
+     // test = 9; //Non-static field 'test' cannot be referenced from a static context
       pushZerosToEnd(arr, n);
       System.out.println("Array after pushing zeros to the back: " + Arrays.toString(arr));
       pushZerosToFront(arr, n);

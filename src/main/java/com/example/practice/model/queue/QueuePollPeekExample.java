@@ -8,7 +8,7 @@ public class QueuePollPeekExample {
    public static void main(String args[]) {
       PriorityQueue<String> queue = new PriorityQueue<String>();
       queue.add("Amit");
-      queue.add("Vijay");
+      queue.offer("Vijay");
       queue.add("Karan");
       queue.add("Jai");
       queue.add("Rahul");
