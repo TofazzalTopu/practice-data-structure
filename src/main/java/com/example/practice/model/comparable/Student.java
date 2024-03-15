@@ -1,10 +1,9 @@
 package com.example.practice.model.comparable;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
 
 class Student implements Comparable<Student> {
     int rollno;
@@ -16,7 +15,6 @@ class Student implements Comparable<Student> {
         this.name = name;
         this.age = age;
     }
-
 
     public int getRollno() {
         return rollno;
@@ -42,6 +40,7 @@ class Student implements Comparable<Student> {
         this.age = age;
     }
 
+    @Override
     public int compareTo(Student st) {
         if (age == st.age)
             return 0;
@@ -62,6 +61,7 @@ class Student implements Comparable<Student> {
             System.out.println(st.rollno + " " + st.name + " " + st.age);
         }
 
+        DoubleStream listt = al.stream().sorted(Comparator.comparing(Student::getAge)).sorted().mapToInt(Student::getAge).asDoubleStream().sorted();
         List<Student> list = al.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
         List<Student> ages = al.stream().sorted(Comparator.comparing(Student::getAge)).collect(Collectors.toList());
         List<Student> names = al.stream().sorted(Comparator.comparing(Student::getName)).collect(Collectors.toList());

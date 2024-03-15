@@ -2,10 +2,7 @@ package com.example.practice.model.arrayList;
 
 import static java.lang.Math.min;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import com.example.practice.model.Player;
@@ -13,14 +10,17 @@ import com.example.practice.model.Player;
 public class SortArrayList {
 
     public static void main(String[] args) {
-        sortArray();
+//        sortArray();
+        sortPlayer();
+    }
+    public static void sortPlayer(){
         List<Integer> integerList = new ArrayList<>(List.of(10, 20, 30, 40, 50, 60, 30, 20, 10));
         Integer[] arr = integerList.toArray(new Integer[0]);
         // -1
         integerList.sort((p1, p2) -> p1.compareTo(p2));
-        integerList.forEach(System.out::println);
-        Collections.sort(integerList);
-        System.out.println("Max " + Collections.max(integerList));
+//        integerList.forEach(System.out::println);
+//        Collections.sort(integerList);
+        System.out.println("M22ax " + Collections.max(integerList));
         Collections.replaceAll(integerList, 10, 15);
 
         // -1
@@ -28,8 +28,10 @@ public class SortArrayList {
         List<Integer> a = integerList.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
         List<Integer> b = integerList.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
         List<Integer> c = integerList.stream().sorted(Comparator.comparingInt(Integer::intValue)).collect(Collectors.toList());
-        System.out.println("\n2. Natural order of " + "ArrayList<Integer> :- \n");
-        integers.forEach(System.out::println);
+//        System.out.println("\n2. Natural order of " + "ArrayList<Integer> :- \n");
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
 
         List<Player> players = new ArrayList<>();
         players.add(new Player("a", 1));
@@ -40,33 +42,39 @@ public class SortArrayList {
 
         // -1
         Collections.sort(playerList, Comparator.comparing(Player::getName).thenComparingInt(Player::getScore));
-        //      playerList.forEach(p -> System.out.println(p.getName()));
 
+        List<Player> p = playerList.stream().sorted(Comparator.comparing(Player::getName)).collect(Collectors.toList());
+        List<Player> ps = playerList.stream().sorted(Comparator.comparing(Player::getName).reversed().thenComparing(Player::getScore).reversed()).collect(Collectors.toList());
+        System.out.println(p);
+        System.out.println(ps);
         // -2
         List<Player> sortByScore = playerList.stream().sorted(Comparator.comparing(Player::getScore).reversed()).collect(Collectors.toList());
-        //      sortByScore.forEach(d -> System.out.println(d.getScore()));
-
         // -3
         List<Player> sortByName = playerList.stream().sorted(Comparator.comparing(Player::getName)).collect(Collectors.toList());
         List<Player> sortByNames = playerList.stream().sorted(Comparator.comparing(Player::getName).thenComparing(Player::getScore)).collect(Collectors.toList());
-        //      sortByName.forEach(p -> System.out.println(p.getName()));
+        System.out.println(sortByScore);
+        System.out.println(sortByName);
+        System.out.println(sortByNames);
 
         //4
         Comparator cmp = Collections.reverseOrder();
-        Collections.sort(sortByScore, cmp);
-
-
+//        Collections.sort(sortByScore, cmp);
+    }
+    public void convertToArrayList(){
+        String[] geeks = {"Rahul", "Utkarsh", "Shubham", "Neelam"};
+        List<String> al = new ArrayList<>(Arrays.asList(geeks));
+        System.out.println(al);
     }
 
     public static int sortArray() {
 //      int[] arr = new int[] { 1, 3, 6, 4, 1, 2 };
-        int[] arr = new int[]{1, 2, 3};
-        List<Integer> integerList = new ArrayList<>();
-        for (int i = 0; i < arr.length; i++) {
-            integerList.add(arr[i]);
-        }
+        Integer[] arr = new Integer[]{4, 7, 6, 1, 2, 3};
 
-        Collections.sort(integerList);
+        // adding elements of array to arrayList.
+//        Collections.addAll(integerList, arr);
+        List<Integer> integerList = new ArrayList<>(Arrays.asList(arr));
+
+//        Collections.sort(integerList);
         int max = Collections.max(integerList);
         int min = Collections.min(integerList);
         int minNumber = 0;
