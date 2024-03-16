@@ -32,9 +32,16 @@ public class Test {
         }
 
         List<Integer> numbers = map.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList());
+        Integer maxNumber = map.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList()).stream().max(Comparator.naturalOrder()).get();
+        Set<Map.Entry<String, Integer>> collect = map.entrySet().stream().filter(e -> Objects.equals(e.getValue(), maxNumber)).collect(Collectors.toSet());
+        String ky = map.entrySet().stream().filter(e-> Objects.equals(e.getValue(), maxNumber)).findFirst().get().getKey();
         int max = Collections.max(numbers);
 
         StringBuilder sb = new StringBuilder("Output: ");
+
+        collect.forEach(e -> {
+            if (e.getValue() == max) sb.append(e.getKey()).append(" ");
+        });
         map.entrySet().stream().forEach(e -> {
             if (e.getValue() == max) sb.append(e.getKey()).append(" ");
         });
@@ -49,7 +56,7 @@ public class Test {
 
         List<String> keys = new ArrayList<>(map.keySet());
         List<Integer> values = new ArrayList<>(map.values());
-        List<Integer> numbers = map.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList());
+        List<Integer> numbers = map.entrySet().stream().map(Map.Entry::getValue).sorted().collect(Collectors.toList());
         int max = Collections.max(map.values());
         StringBuilder sb = new StringBuilder("Output: ");
         map.entrySet().forEach(e -> {
