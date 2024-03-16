@@ -21,29 +21,16 @@ public class Test {
     //Array
     public static String findNames(String votes[]) {
 
-        Map<String, Long> maps = Arrays.stream(votes).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        Map<String, Integer> map = new HashMap<>();
-        for (int i = 0; i < votes.length; i++) {
-            if (!map.containsKey(votes[i])) {
-                map.put(votes[i], 1);
-            } else {
-                map.put(votes[i], map.get(votes[i]) + 1);
-            }
-        }
+        Map<String, Long> map = Arrays.stream(votes).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-        List<Integer> numbers = map.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList());
-        Integer maxNumber = map.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList()).stream().max(Comparator.naturalOrder()).get();
-        Set<Map.Entry<String, Integer>> collect = map.entrySet().stream().filter(e -> Objects.equals(e.getValue(), maxNumber)).collect(Collectors.toSet());
-        String ky = map.entrySet().stream().filter(e-> Objects.equals(e.getValue(), maxNumber)).findFirst().get().getKey();
-        int max = Collections.max(numbers);
+        List<Long> numbers = map.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList());
+        Long maxNumber = map.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList()).stream().max(Comparator.naturalOrder()).get();
+        Set<Map.Entry<String, Long>> collect = map.entrySet().stream().filter(e -> Objects.equals(e.getValue(), maxNumber)).collect(Collectors.toSet());
 
         StringBuilder sb = new StringBuilder("Output: ");
 
         collect.forEach(e -> {
-            if (e.getValue() == max) sb.append(e.getKey()).append(" ");
-        });
-        map.entrySet().stream().forEach(e -> {
-            if (e.getValue() == max) sb.append(e.getKey()).append(" ");
+            sb.append(e.getKey()).append(" ");
         });
         System.out.println(sb.toString().stripTrailing());
         return sb.toString().stripTrailing();
@@ -53,6 +40,14 @@ public class Test {
     public static String findNames(List<String> votes) {
         Map<String, Integer> map = new TreeMap<>();
         new HashSet<>(votes).forEach(s-> map.put(s, Collections.frequency(votes, s)));
+//        Map<String, Integer> map = new HashMap<>();
+//        for (int i = 0; i < votes.length; i++) {
+//            if (!map.containsKey(votes[i])) {
+//                map.put(votes[i], 1);
+//            } else {
+//                map.put(votes[i], map.get(votes[i]) + 1);
+//            }
+//        }
 
         List<String> keys = new ArrayList<>(map.keySet());
         List<Integer> values = new ArrayList<>(map.values());

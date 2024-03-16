@@ -61,10 +61,10 @@ class Student implements Comparable<Student> {
             System.out.println(st.rollno + " " + st.name + " " + st.age);
         }
 
-        DoubleStream listt = al.stream().sorted(Comparator.comparing(Student::getAge)).sorted().mapToInt(Student::getAge).asDoubleStream().sorted();
-        List<Student> list = al.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
-        List<Student> ages = al.stream().sorted(Comparator.comparing(Student::getAge)).collect(Collectors.toList());
-        List<Student> names = al.stream().sorted(Comparator.comparing(Student::getName)).collect(Collectors.toList());
-        List<Student> namess = al.stream().sorted(Comparator.comparing(Student::getName).thenComparing(Student::getRollno).reversed()).collect(Collectors.toList());
+        DoubleStream doubleStream = al.stream().sorted(Comparator.comparing(Student::getAge)).sorted().mapToInt(Student::getAge).asDoubleStream().sorted();
+        List<Student> sort = al.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
+        List<Student> sortByAge = al.stream().sorted(Comparator.comparing(Student::getAge)).collect(Collectors.toList());
+        List<Student> sortByName = al.stream().sorted(Comparator.comparing(Student::getName)).collect(Collectors.toList());
+        List<Student> sortByNameAndRoll = al.stream().sorted(Comparator.comparing(Student::getName).thenComparing(Student::getRollno).reversed()).collect(Collectors.toList());
     }
 }
