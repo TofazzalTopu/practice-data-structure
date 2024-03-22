@@ -1,4 +1,4 @@
-package com.example.practice.model;
+package com.example.practice.OnlineTest;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -27,6 +27,22 @@ public class Test {
    }
 
    public static void main(String[] args) {
+      String input = "This is for your reference";
+      StringBuffer sb = new StringBuffer();
+
+      String words[] = input.split(" ");
+      for (int i = 0; i < words.length; i++) {
+         String word = words[i];
+         int length = word.length() - 1;
+         int j = length;
+         while (j >= 0 && j <= length) {
+            sb.append(word.charAt(j));
+            j--;
+         }
+         sb.append(" ");
+      }
+      System.out.println("Reverse: " + sb);
+
       String str = "VVVVVTTTTKKKVV";
       Map<Character, Integer> map = new LinkedHashMap<>();
       for (int i = 0; i < str.length(); i++) {

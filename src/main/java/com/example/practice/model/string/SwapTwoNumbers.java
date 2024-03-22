@@ -10,13 +10,13 @@ public class SwapTwoNumbers {
 //        swapWithoutUsingThirdVariable();
 //        countNumberOfWords();
 //        iterateMapUsingWhileLoop();
-//        checkPrimeNumber();
+        checkPrimeNumber();
 //        checkPalindrome();
 //        checkFibonacci();
 //        findSecondHighestNumberOfAnArray();
 //        ArmstrongNumber();
 //        replaceWhiteSpace();
-        StringJoinerExample();
+//        StringJoinerExample();
 //        say();
 
     }
@@ -95,25 +95,28 @@ public class SwapTwoNumbers {
     public static void checkPrimeNumber() {
         int temp, num;
         boolean isPrime = true;
-        Scanner in = new Scanner(System.in);
-        num = in.nextInt();
-        in.close();
-        int m = num / 2;
-        if (num == 0 || num == 1) {
-            isPrime = false;
-        } else {
-            for (int i = 2; i <= m; i++) {
-                if (num % i == 0) {
-                    isPrime = false;
-                    break;
-                }
-            }
-        }
-
-        if (isPrime)
-            System.out.println(num + " number is prime");
-        else
-            System.out.println(num + " number is not a prime");
+//        Scanner in = new Scanner(System.in);
+//        num = in.nextInt();
+//        in.close();
+//        boolean isPrime = true;
+//
+//        int m = num / 2;
+//        if (num == 0 || num == 1) {
+//            isPrime = false;
+//        } else {
+//            for (int i = 2; i <= m; i++) {
+//                if (num % i == 0) {
+//                    isPrime = false;
+//                    break;
+//                }
+//            }
+//        }
+//
+//        if (isPrime)
+//            System.out.println(num + " number is prime");
+//        else {
+//            System.out.println(num + " number is not a prime");
+//        }
     }
 
     //Q #8) Write a Java Program to find whether a string or number is palindrome or not.

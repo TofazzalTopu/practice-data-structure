@@ -5,7 +5,7 @@ import java.util.*;
 class Simple {
     public static void main(String args[]) {
 
-        ArrayList al = new ArrayList();
+        ArrayList<Student> al = new ArrayList<>();
         al.add(new Student(101, "Vijay", 23));
         al.add(new Student(106, "Ajay", 27));
         al.add(new Student(105, "Jai", 21));
@@ -13,21 +13,17 @@ class Simple {
         System.out.println("Sorting by Name");
 
         Collections.sort(al, new NameComparator());
+        Collections.sort(al, Comparator.comparing(Student::getName));
         Iterator itr = al.iterator();
         while (itr.hasNext()) {
             Student st = (Student) itr.next();
             System.out.println(st.rollno + " " + st.name + " " + st.age);
         }
-
+        al.forEach(st-> System.out.println(st.getAge() + " " + st.getName() + " " + st.getAge()));
         System.out.println("Sorting by age");
 
         Collections.sort(al, new AgeComparator());
-        Iterator itr2 = al.iterator();
-        while (itr2.hasNext()) {
-            Student st = (Student) itr2.next();
-            System.out.println(st.rollno + " " + st.name + " " + st.age);
-        }
-
+        al.forEach(st-> System.out.println(st.getAge() + " " + st.getName() + " " + st.getAge()));
 
         ArrayList<Student> studentArrayList = new ArrayList<Student>();
         studentArrayList.add(new Student(101, "Vijay", 23));
@@ -38,17 +34,13 @@ class Simple {
         Comparator<Student> cm1 = Comparator.comparing(Student::getName);
         Collections.sort(studentArrayList, cm1);
         System.out.println("Sorting by Name");
-        for (Student st : studentArrayList) {
-            System.out.println(st.rollno + " " + st.name + " " + st.age);
-        }
+        studentArrayList.forEach(st-> System.out.println(st.getAge() + " " + st.getName() + " " + st.getAge()));
+
         //Sorting elements on the basis of age
         Comparator<Student> cm2 = Comparator.comparing(Student::getAge);
         Collections.sort(studentArrayList, cm2);
         System.out.println("Sorting by Age");
-        for (Student st : studentArrayList) {
-            System.out.println(st.rollno + " " + st.name + " " + st.age);
-        }
-
+        studentArrayList.forEach(st-> System.out.println(st.getAge() + " " + st.getName() + " " + st.getAge()));
 
         ArrayList<String> list = new ArrayList<String>();//Creating arraylist
         list.add("Ravi");//Adding object in arraylist

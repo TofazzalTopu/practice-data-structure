@@ -19,6 +19,7 @@ public class Test {
          put('l', 2); put('o', 2);
          put('n', 1);
       }};
+      Map<String, String> m = new HashMap<>(){{put("h", ""); put("u", "i");}};
 
       for (char c : text.toCharArray()) {
          if (map2.containsKey(c)) {
