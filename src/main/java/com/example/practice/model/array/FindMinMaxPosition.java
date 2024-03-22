@@ -2,6 +2,7 @@ package com.example.practice.model.array;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.function.Function;
 
 public class FindMinMaxPosition {
 
@@ -26,7 +27,7 @@ public class FindMinMaxPosition {
         int[] my_int_arr = {34, 2, 67, 89, 99, 45, 77};
         int min_val = Collections.min(Arrays.asList(my_arr));
         int max_val = Collections.max(Arrays.asList(my_arr));
-
+//        int min = Arrays.stream(my_int_arr).min().getAsInt();
         int min = my_int_arr[0];
         int max = my_int_arr[0];
         for (int i = 1; i < my_int_arr.length; i++) {

@@ -58,7 +58,7 @@ public class SortArrayList {
 
         //4
         Comparator cmp = Collections.reverseOrder();
-//        Collections.sort(sortByScore, cmp);
+        Collections.sort(sortByScore, cmp);
     }
     public void convertToArrayList(){
         String[] geeks = {"Rahul", "Utkarsh", "Shubham", "Neelam"};

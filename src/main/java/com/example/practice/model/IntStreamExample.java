@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class IntStreamExample {
-//    https://howtodoinjava.com/java8/intstream-examples/
+    //    https://howtodoinjava.com/java8/intstream-examples/
     public static void main(String[] args) {
         IntStream.of(10);               //10
         IntStream.of(1, 2, 3);    //1,2,3
@@ -18,8 +18,8 @@ public class IntStreamExample {
 //      The iterator() function is useful for creating infinite streams. Also, we can use this method to produce streams
 //      where values are increment by any other value than 1.
 //      Given example produces first 10 even numbers starting from 0.
-        IntStream.iterate(0, i -> i + 2).limit(10);
-//               .forEach(System.out::println); //0,2,4,6,8,10,12,14,16,18
+        IntStream.iterate(0, i -> i + 2).limit(10)
+                .forEach(System.out::println); //0,2,4,6,8,10,12,14,16,18
 
         IntStream stream = IntStream.generate(() -> {
             return (int) (Math.random() * 10000);
@@ -43,7 +43,7 @@ public class IntStreamExample {
 
 
         List<Integer> result = Stream.of(1, 2, 3, 4).map(n -> n * 2).collect(Collectors.toList());
-//      result.forEach(System.out::println);
+        result.forEach(System.out::println);
         filteringValues();
     }
 
@@ -52,11 +52,24 @@ public class IntStreamExample {
         List<Integer> primes = stream.filter(IntStreamExample::isPrime).boxed().collect(Collectors.toList());
         System.out.println(primes);
 //        System.out.println(Arrays.stream(primes.toArray()).collect(Collectors.toSet()));
-
     }
 
-    public static boolean isPrime(int i) {
-        IntPredicate isDivisible = index -> i % index == 0;
-        return i > 1 && IntStream.range(2, i).noneMatch(isDivisible);
+    public static boolean isPrime(int number) {
+//        IntPredicate isDivisible = index -> number % index == 0;
+//        return number > 1 && IntStream.range(2, number).noneMatch(isDivisible);
+//        return number > 1 && ntStream.rangeClosed(2, number/2).noneMatch(index -> number % index == 0);
+        return IntStream.rangeClosed(2, number / 2).noneMatch(i -> number % i == 0);
+    }
+
+    //    @Test
+    public void generatePrimeNumberListByStream() {
+        List<Integer> primeNumbers =
+                IntStream
+                        .range(2, 30)
+                        .filter(number -> IntStream.range(2, number)
+                                .noneMatch(divider -> number % divider == 0))
+                        .boxed()
+                        .collect(Collectors.toList());
+//        assertThat(primeNumbers, contains(2,3,5,7,11,13, 17,19, 23, 29));
     }
 }
