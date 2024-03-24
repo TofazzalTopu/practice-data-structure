@@ -56,12 +56,18 @@ public class PolySurance {
         orderWiseTotalDiscount.entrySet().forEach((e) -> {
             orderWiseTotalDiscountPercentage.put(e.getKey(), (e.getValue() * 100) / totalAmountOfLossViaDiscount);
         });
-        Map<String, Object> result = new LinkedHashMap<>();
-        result.put("totalSalesWithoutDiscount", totalSalesWithoutDiscount);
-        result.put("totalSalesAfterDiscount", totalSalesAfterDiscount);
-        result.put("totalAmountOfLossViaDiscount", totalAmountOfLossViaDiscount);
-        result.put("orderWiseTotalDiscountPercentage", orderWiseTotalDiscountPercentage);
 
+        double totalDiscountInPercentage = (totalAmountOfLossViaDiscount * 100) / totalSalesWithoutDiscount.get();
+        double averageDiscountPerCustomerAsPercentage = (totalDiscountInPercentage / 5);
+
+        Map<String, Object> result = new LinkedHashMap<>();
+        result.put("totalSalesWithoutDiscount:", totalSalesWithoutDiscount);
+        result.put("totalSalesAfterDiscount:", totalSalesAfterDiscount);
+        result.put("totalAmountOfLossViaDiscount:", totalAmountOfLossViaDiscount);
+        result.put("orderWiseTotalDiscountPercentage:", orderWiseTotalDiscountPercentage);
+        result.put("Discount calculated on 'Total Sales Without Discount':", "===============");
+        result.put("totalDiscountInPercentage:", totalDiscountInPercentage);
+        result.put("averageDiscountPerCustomerAsPercentage:", averageDiscountPerCustomerAsPercentage);
         result.entrySet().forEach(e -> System.out.println(e.getKey() + "  " + e.getValue()));
         assert totalSalesWithoutDiscount.get() >= 18 : " Not valid";
     }
