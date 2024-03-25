@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.UnaryOperator;
 
-public class PolySurance {
+public class PolySuranceTestPartOne {
 
     public static void main(String[] args) {
         Map<String, Double> discounts = new HashMap<>();
@@ -44,31 +44,24 @@ public class PolySurance {
 
             double orderWiseDiscount = 0.0;
             for (Item item : order.getItems()) {
-                double itemWiseDiscount = (discounts.get(order.getDiscount()) != null ?
+                orderWiseDiscount += (discounts.get(order.getDiscount()) != null ?
                         ((products.get(item.getSku()) * item.getQuantity()) * discounts.get(order.getDiscount())) : 0);
-                orderWiseDiscount += itemWiseDiscount;
             }
             orderWiseTotalDiscount.put(order.getOrderId(), orderWiseDiscount);
         });
 
-
         double totalAmountOfLossViaDiscount = totalSalesWithoutDiscount.get() - totalSalesAfterDiscount.get();
-        orderWiseTotalDiscount.entrySet().forEach((e) -> {
-            orderWiseTotalDiscountPercentage.put(e.getKey(), (e.getValue() * 100) / totalAmountOfLossViaDiscount);
-        });
+        orderWiseTotalDiscount.forEach((key, value) -> orderWiseTotalDiscountPercentage.put(key, (value * 100) / totalAmountOfLossViaDiscount));
 
-        double totalDiscountInPercentage = (totalAmountOfLossViaDiscount * 100) / totalSalesWithoutDiscount.get();
-        double averageDiscountPerCustomerAsPercentage = (totalDiscountInPercentage / 5);
+        double averageDiscountPerCustomerAsPercentage = (orderWiseTotalDiscountPercentage.values().stream().mapToDouble(v -> v).sum() / orderList.size());
 
         Map<String, Object> result = new LinkedHashMap<>();
         result.put("totalSalesWithoutDiscount:", totalSalesWithoutDiscount);
         result.put("totalSalesAfterDiscount:", totalSalesAfterDiscount);
         result.put("totalAmountOfLossViaDiscount:", totalAmountOfLossViaDiscount);
         result.put("orderWiseTotalDiscountPercentage:", orderWiseTotalDiscountPercentage);
-        result.put("Discount calculated on 'Total Sales Without Discount':", "===============");
-        result.put("totalDiscountInPercentage:", totalDiscountInPercentage);
         result.put("averageDiscountPerCustomerAsPercentage:", averageDiscountPerCustomerAsPercentage);
-        result.entrySet().forEach(e -> System.out.println(e.getKey() + "  " + e.getValue()));
-        assert totalSalesWithoutDiscount.get() >= 18 : " Not valid";
+        result.forEach((key, value) -> System.out.println(key + "  " + value));
+
     }
 }
