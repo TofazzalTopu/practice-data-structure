@@ -24,8 +24,7 @@ public class PolySuranceTestPartOne {
         Order orderFour = new Order(4L, "SALE10", Arrays.asList(new Item("1001", 7)));
         Order orderFive = new Order(5L, "SALE20", Arrays.asList(new Item("1003", 1)));
 
-        List<Order> orderList = new ArrayList<>();
-        orderList.addAll(Arrays.asList(orderOne, orderTwo, orderThree, orderFour, orderFive));
+        List<Order> orderList = new ArrayList<>(Arrays.asList(orderOne, orderTwo, orderThree, orderFour, orderFive));
         AtomicReference<Double> totalSalesWithoutDiscount = new AtomicReference<>(0.0);
         AtomicReference<Double> totalSalesAfterDiscount = new AtomicReference<>(0.0);
         Map<Long, Double> orderWiseTotalDiscountPercentage = new HashMap<>();
@@ -33,13 +32,14 @@ public class PolySuranceTestPartOne {
 
         orderList.forEach(order -> {
             order.getItems().stream().mapToDouble(e -> (products.get(e.getSku()) * e.getQuantity()))
-                    .<UnaryOperator<Double>>mapToObj(v -> v1 -> new Double((double) (v1 + v)))
+                    .<UnaryOperator<Double>>mapToObj(v -> v1 -> (double) (v1 + v))
                     .forEach(totalSalesWithoutDiscount::updateAndGet);
 
             order.getItems()
                     .stream()
-                    .mapToDouble(e -> (products.get(e.getSku()) * e.getQuantity()) - (discounts.get(order.getDiscount()) != null ? ((products.get(e.getSku()) * e.getQuantity()) * discounts.get(order.getDiscount())) : 0))
-                    .<UnaryOperator<Double>>mapToObj(v -> v1 -> new Double((double) (v1 + v)))
+                    .mapToDouble(e -> (products.get(e.getSku()) * e.getQuantity()) - (discounts.get(order.getDiscount()) != null ?
+                            ((products.get(e.getSku()) * e.getQuantity()) * discounts.get(order.getDiscount())) : 0))
+                    .<UnaryOperator<Double>>mapToObj(v -> v1 -> (double) (v1 + v))
                     .forEach(totalSalesAfterDiscount::updateAndGet);
 
             double orderWiseDiscount = 0.0;
@@ -59,9 +59,8 @@ public class PolySuranceTestPartOne {
         result.put("totalSalesWithoutDiscount:", totalSalesWithoutDiscount);
         result.put("totalSalesAfterDiscount:", totalSalesAfterDiscount);
         result.put("totalAmountOfLossViaDiscount:", totalAmountOfLossViaDiscount);
-        result.put("orderWiseTotalDiscountPercentage:", orderWiseTotalDiscountPercentage);
         result.put("averageDiscountPerCustomerAsPercentage:", averageDiscountPerCustomerAsPercentage);
-        result.forEach((key, value) -> System.out.println(key + "  " + value));
-
+        System.out.println("Part One Result:");
+        result.forEach((key, value) -> System.out.println(key + " " + value));
     }
 }
