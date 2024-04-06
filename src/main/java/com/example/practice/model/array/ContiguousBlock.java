@@ -1,6 +1,6 @@
 package com.example.practice.model.array;
 
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.IntStream;
 
 /*
@@ -41,9 +41,9 @@ Thus, we print  on a new line.
 */
 public class ContiguousBlock {
 
-   public static void main(String[] args) {
-      /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
-      Scanner in = new Scanner(System.in);
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner in = new Scanner(System.in);
 //      int n = in.nextInt();
 //      int count =0;
 //      IntStream stream = IntStream.range(1, 100);
@@ -57,24 +57,48 @@ public class ContiguousBlock {
 //         }
 //      }
 //      System.out.println(count);
-      d();
-   }
+        int arr[] = {1, -2, 4, -5, 1};
+        printNumberOfNegativeSubarrays();
+        contiguiousSubArrays(arr, 3);
+    }
 
-   static int d(){
-      Scanner s = new Scanner(System.in);
-      int n = s.nextInt();
-      int count = 0;
-      int arr[] = new int[n];
-      for(int i = 0; i < n; i++) arr[i] = s.nextInt();
+    static int printNumberOfNegativeSubarrays() {
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        int count = 0;
+        int arr[] = new int[n];
+        for (int i = 0; i < n; i++) arr[i] = s.nextInt();
 
-      for(int i = 1; i < n; i++){
-         int sum = 0;
-         for(int j =1; j < n; j++){
-            sum = sum + arr[j];
-            if(sum < 0) count++;
-         }
-      }
-      System.out.println(count);
-      return count;
-   }
+        for (int i = 1; i < n; i++) {
+            int sum = 0;
+            for (int j = 1; j < n; j++) {
+                sum = sum + arr[j];
+                if (sum < 0) count++;
+            }
+        }
+        System.out.println("Total Count" + count);
+        return count;
+    }
+
+    public static void contiguiousSubArrays(int arr[], int targetSum) {
+        Map<Integer, List<Integer>> map = new TreeMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 1; j < arr.length; j++) {
+                int sum = 0;
+                List<Integer> integerList = new ArrayList<>();
+                for (int k = i; k <= j; k++) {
+//                    System.out.print(arr[k] + " ");
+                    sum += arr[k];
+                    integerList.add(arr[k]);
+                }
+                if (sum == targetSum) {
+                    System.out.println(sum + " " + integerList);
+                    return;
+                }
+                map.put(sum, integerList);
+                System.out.println();
+            }
+        }
+        System.out.println(map);
+    }
 }

@@ -10,8 +10,8 @@ import com.example.practice.model.Player;
 public class SortArrayList {
 
     public static void main(String[] args) {
-//        sortArray();
-        sortPlayer();
+        sortArray();
+//        sortPlayer();
     }
     public static void sortPlayer(){
         List<Integer> integerList = new ArrayList<>(List.of(10, 20, 30, 40, 50, 60, 30, 20, 10));
