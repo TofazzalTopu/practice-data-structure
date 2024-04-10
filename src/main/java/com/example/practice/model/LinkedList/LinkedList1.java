@@ -25,6 +25,7 @@ public class LinkedList1 {
       ll.add("Ravi");
       ll.add("Vijay");
       ll.add("Ajay");
+
       System.out.println("After invoking add(E e) method: "+ll);
       //Adding an element at the specific position
       ll.add(1, "Gaurav");

@@ -16,8 +16,8 @@ public class GroupByCountArrayList {
 //      List<String> items = Arrays.asList("apple", "apple", "banana", "apple", "orange", "banana", "papaya");
       List<String> items = new ArrayList<>(Arrays.asList("apple", "apple", "banana", "apple", "orange", "banana", "papaya"));
       countByClassicalLoop(items);
-//      Map<String, Long> result = items.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-//      System.out.println(result);
+      Map<String, Long> result = items.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+      System.out.println(result);
    }
 
    public static void fizzBuzz(int n) {

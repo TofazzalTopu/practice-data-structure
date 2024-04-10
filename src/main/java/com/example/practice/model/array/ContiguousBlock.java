@@ -42,24 +42,29 @@ Thus, we print  on a new line.
 public class ContiguousBlock {
 
     public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
-        Scanner in = new Scanner(System.in);
-//      int n = in.nextInt();
-//      int count =0;
-//      IntStream stream = IntStream.range(1, 100);
-//      int arr[] = new int[n];
-//      for(int i=0; i<n; i++) arr[i] = in.nextInt();
-//      for(int i=0; i<n; i++) {
-//         int sum = 0;
-//         for (int j=i; j<n; j++) {
-//            sum = arr[j]+sum;
-//            if (sum<0) count++;
-//         }
-//      }
-//      System.out.println(count);
         int arr[] = {1, -2, 4, -5, 1};
         printNumberOfNegativeSubarrays();
         contiguiousSubArrays(arr, 3);
+        countBlock();
+    }
+
+    static int countBlock() {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner in = new Scanner(System.in);
+        int n = 5;
+        int count = 0;
+        IntStream stream = IntStream.range(1, 100);
+        int arr[] = new int[n];
+        for (int i = 0; i < n; i++) arr[i] = in.nextInt();
+        for (int i = 0; i < n; i++) {
+            int sum = 0;
+            for (int j = i; j < n; j++) {
+                sum = arr[j] + sum;
+                if (sum < 0) count++;
+            }
+        }
+        System.out.println(count);
+        return count;
     }
 
     static int printNumberOfNegativeSubarrays() {
