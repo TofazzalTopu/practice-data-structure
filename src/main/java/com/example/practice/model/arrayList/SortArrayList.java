@@ -11,6 +11,7 @@ public class SortArrayList {
 
     public static void main(String[] args) {
         sortArray();
+        solution();
 //        sortPlayer();
     }
     public static void sortPlayer(){
@@ -91,13 +92,14 @@ public class SortArrayList {
         if (minNumber == 0) {
             minNumber = max + 1;
         }
+        System.out.println(minNumber);
         return minNumber;
     }
 
 
-    public int solution(int[] A) {
+    public static int solution() {
         // write your code in Java SE 8
-        A = new int[]{1, 0, 1, 0, 1, 1};
+        int[] A = new int[]{1, 0, 1, 0, 1, 1};
         int a = 0;
         int b = 0;
         int n = A.length;
@@ -120,6 +122,7 @@ public class SortArrayList {
 
             }
         }
+        System.out.println(min(a,b));
         return min(a, b);
     }
 }

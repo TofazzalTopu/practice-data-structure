@@ -93,39 +93,31 @@ public class SwapTwoNumbers {
 
     //Q #7) Write a Java Program to find whether a number is prime or not.
     public static void checkPrimeNumber() {
-        int temp, num;
+        int temp, num = 459;
         boolean isPrime = true;
-//        Scanner in = new Scanner(System.in);
-//        num = in.nextInt();
-//        in.close();
-//        boolean isPrime = true;
-//
-//        int m = num / 2;
-//        if (num == 0 || num == 1) {
-//            isPrime = false;
-//        } else {
-//            for (int i = 2; i <= m; i++) {
-//                if (num % i == 0) {
-//                    isPrime = false;
-//                    break;
-//                }
-//            }
-//        }
-//
-//        if (isPrime)
-//            System.out.println(num + " number is prime");
-//        else {
-//            System.out.println(num + " number is not a prime");
-//        }
+        int m = num / 2;
+        if (num == 0 || num == 1) {
+            isPrime = false;
+        } else {
+            for (int i = 2; i <= m; i++) {
+                if (num % i == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+        }
+
+        if (isPrime)
+            System.out.println(num + " number is prime");
+        else {
+            System.out.println(num + " number is not a prime");
+        }
     }
 
     //Q #8) Write a Java Program to find whether a string or number is palindrome or not.
     public static void checkPalindrome() {
-        String original, reverse = "";
-        Scanner in = new Scanner(System.in);
+        String original = "adcfd", reverse = "";
         int length;
-        System.out.println("Enter the number or String");
-        original = in.nextLine();
         length = original.length();
         for (int i = length - 1; i >= 0; i--) {
             reverse = reverse + original.charAt(i);
@@ -140,10 +132,7 @@ public class SwapTwoNumbers {
 
     //Q #9) Write a Java Program for the Fibonacci series.
     public static void checkFibonacci() {
-        int num, a = 0, b = 0, c = 1;
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter the number of times");
-        num = in.nextInt();
+        int num = 10, a = 0, b = 0, c = 1;
         System.out.println("Fibonacci Series of the number is:");
         for (int i = 0; i < num; i++) {
             a = b;
@@ -174,6 +163,7 @@ public class SwapTwoNumbers {
     }
 
     //Q #17) Write a Java Program to check Armstrong number.
+    // An Armstrong number is a positive m-digit number that is equal to the sum of the mth powers of their digits.
     public static void ArmstrongNumber() {
         int c = 0, a, temp;
         int n = 153;//It is the number to check Armstrong

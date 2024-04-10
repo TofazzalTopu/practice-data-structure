@@ -25,11 +25,14 @@ public class FindMinMaxPosition {
     public static void main(String[] args) {
         Integer[] my_arr = {34, 2, 67, 89, 99, 45, 77};
         int[] my_int_arr = {34, 2, 67, 89, 99, 45, 77};
+        //approach-1
         int min_val = Collections.min(Arrays.asList(my_arr));
         int max_val = Collections.max(Arrays.asList(my_arr));
 //        int min = Arrays.stream(my_int_arr).min().getAsInt();
+        //approach-2
         int min = my_int_arr[0];
         int max = my_int_arr[0];
+        //approach-3
         for (int i = 1; i < my_int_arr.length; i++) {
             if (my_int_arr[i] > max) {
                 max = my_int_arr[i];
