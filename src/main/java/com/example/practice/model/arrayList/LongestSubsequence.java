@@ -1,5 +1,10 @@
 package com.example.practice.model.arrayList;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class LongestSubsequence {
 
     static int max_ref; // stores the LIS
@@ -7,27 +12,38 @@ public class LongestSubsequence {
     // driver program to test above functions
     public static void main(String args[]) {
         int arr[] = {10, 22, 9, 33, 21, 50, 41, 60};
+        int arr1[] = {1, 2, 4, 7};
+        int arr2[] = {5, 87, 99, 85, 50,93};
         int n = arr.length;
-        System.out.println("Length of lis is " + lis(arr, n) + "\n");
+//        System.out.println("Length of lis is " + lis(arr, n) + "\n");
         //wrong answer
 //        System.out.println(lengthOfLIS());
-        System.out.println(longestIncreasingSubsequence(arr, n));
+        System.out.println(longestIncreasingSubsequence(arr2, arr2.length));
+//        lengthOfLIS();
     }
 
     /* lis() returns the length of the longest increasing subsequence in arr[] of size n */
-    static int longestIncreasingSubsequence(int arr[], int n) {
-        int lis[] = new int[n];
+    static int longestIncreasingSubsequence(int arr[], int c) {
         int i, j, max = 0;
+        List<Integer> arrr = new ArrayList<>(Arrays.asList(5, 87, 99, 85, 50,93));
+//        List<Integer> a = List.of(arr);
+        int n = arrr.size();
+        int lis[] = new int[n];
+
+        Collections.sort(arrr);
 
         /* Initialize LIS values for all indexes */
-        for (i = 0; i < n; i++)
+        for (i = 0; i < n; i++) {
             lis[i] = 1;
-
+        }
         /* Compute optimized LIS values in bottom up manner */
-        for (i = 1; i < n; i++)
-            for (j = 0; j < i; j++)
-                if (arr[i] > arr[j] && lis[i] < lis[j] + 1)
+        for (i = 1; i < n; i++) {
+            for (j = 0; j < i; j++) {
+                if (arr[i] > arr[j] && lis[i] < lis[j] + 1) {
                     lis[i] = lis[j] + 1;
+                }
+            }
+        }
 
         /* Pick maximum of all LIS values */
         for (i = 0; i < n; i++)
@@ -39,7 +55,10 @@ public class LongestSubsequence {
 
     public static int lengthOfLIS() {
 //        int nums[] = {0, 22, 9, 33, 21, 50, 41, 60, 80};
-        int nums[] = {10, 9, 2, 5, 3, 7, 101, 18};
+//        int nums[] = {10, 9, 2, 5, 3, 7, 101, 18};
+//        int nums[] = {1, 2, 4, 7};
+        int nums[] = {5, 87, 99, 85, 50,93};
+//        int nums[] = {10, 9, 2, 5, 3, 7, 101, 18};
         int[] tails = new int[nums.length];
         int size = 0;
         for (int x : nums) {
@@ -55,6 +74,7 @@ public class LongestSubsequence {
             tails[i] = x;
             if (i == size) ++size;
         }
+        System.out.println(size);
         return size;
     }
 
