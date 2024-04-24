@@ -54,8 +54,8 @@ public class Test {
         List<Integer> numbers = map.entrySet().stream().map(Map.Entry::getValue).sorted().collect(Collectors.toList());
         int max = Collections.max(map.values());
         StringBuilder sb = new StringBuilder("Output: ");
-        map.entrySet().forEach(e -> {
-            if (e.getValue() == max) sb.append(e.getKey()).append(" ");
+        map.forEach((key, value) -> {
+            if (value == max) sb.append(key).append(" ");
 //            if (e.getValue() == max) System.out.print(e.getKey() +" ");
         });
 

@@ -1,6 +1,8 @@
 package com.example.practice.model.string;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class SwapTwoNumbers {
 
@@ -8,16 +10,19 @@ public class SwapTwoNumbers {
         // TODO Auto-generated method stub
 //        swapUsingThirdVariable();
 //        swapWithoutUsingThirdVariable();
-//        countNumberOfWords();
-//        iterateMapUsingWhileLoop();
+        countNumberOfWords();
+        iterateMapUsingWhileLoop();
         checkPrimeNumber();
-//        checkPalindrome();
-//        checkFibonacci();
-//        findSecondHighestNumberOfAnArray();
-//        ArmstrongNumber();
-//        replaceWhiteSpace();
-//        StringJoinerExample();
-//        say();
+        checkPalindrome();
+        checkFibonacci();
+        findSecondHighestNumberOfAnArray();
+        ArmstrongNumber();
+        replaceWhiteSpace();
+        StringJoinerExample();
+        sortInDescendingOrderArrayAlgorithm(new int[]{3, 4, 2, 7, 9, 4});
+        sortInAscendingOrderArrayAlgorithm(new int[]{3, 4, 2, 7, 9, 4});
+        reduceMethod(new int[]{3, 4, 2, 7, 9, 4});
+        say();
 
     }
 
@@ -56,7 +61,7 @@ public class SwapTwoNumbers {
 
     //Q #5) Write a Java Program to count the number of words in a string using HashMap.
     public static void countNumberOfWords() {
-        String str = "This this is is done by Saket Saket";
+        String str = "This this is done by Saket Saket";
         String[] split = str.split(" ");
 
         HashMap<String, Integer> map = new HashMap<String, Integer>();
@@ -93,8 +98,10 @@ public class SwapTwoNumbers {
 
     //Q #7) Write a Java Program to find whether a number is prime or not.
     public static void checkPrimeNumber() {
-        int temp, num = 459;
+        int temp, num = 19;
         boolean isPrime = true;
+
+        // 1
         int m = num / 2;
         if (num == 0 || num == 1) {
             isPrime = false;
@@ -112,6 +119,12 @@ public class SwapTwoNumbers {
         else {
             System.out.println(num + " number is not a prime");
         }
+
+        // 2
+        OptionalInt findAny = IntStream.range(2, m + 1).filter(i -> num % i == 0).findAny();
+        List<Integer> findList = IntStream.range(2, m + 1).boxed().collect(Collectors.toList()).stream().filter(i -> num % i == 0).collect(Collectors.toList());
+        if (findList.isEmpty()) System.out.println("Prime");
+        else System.out.println("Not Prime");
     }
 
     //Q #8) Write a Java Program to find whether a string or number is palindrome or not.
@@ -165,22 +178,27 @@ public class SwapTwoNumbers {
     //Q #17) Write a Java Program to check Armstrong number.
     // An Armstrong number is a positive m-digit number that is equal to the sum of the mth powers of their digits.
     public static void ArmstrongNumber() {
-        int c = 0, a, temp;
+        int c = 0, a, temp, digits = 0;
         int n = 153;//It is the number to check Armstrong
         temp = n;
 
         //1
         String num = String.valueOf(n);
-        int sum=0;
-        for(int i = 0; i < num.length(); i++){
-            sum += (Integer.parseInt(String.valueOf(num.charAt(i))) * Integer.parseInt(String.valueOf(num.charAt(i))) * Integer.parseInt(String.valueOf(num.charAt(i))));
+        int sum = 0;
+        for (int i = 0; i < num.length(); i++) {
+            sum += (int) Math.pow(Integer.parseInt(String.valueOf(num.charAt(i))), num.length());
         }
 
         //2
+        int length = String.valueOf(n).length();
+        while (temp > 0) {
+            temp = temp / 10;
+            digits++;
+        }
         while (n > 0) {
             a = n % 10;
             n = n / 10;
-            c = c + (a * a * a);
+            c += (int) (Math.pow(a, length));
         }
         if (temp == c)
             System.out.println("armstrong number");
@@ -195,6 +213,7 @@ public class SwapTwoNumbers {
         String str2 = str1.replaceAll("\\s", "");
         System.out.println(str2);
     }
+
     public static void StringJoinerExample() {
         StringJoiner joinNames = new StringJoiner(","); // passing comma(,) as delimiter
         // Adding values to StringJoiner
@@ -223,7 +242,7 @@ public class SwapTwoNumbers {
 
         // Returns length of StringJoiner
         int length = joinNames.length();
-        System.out.println("Length: "+length);
+        System.out.println("Length: " + length);
 
         // Returns StringJoiner as String type
         String str = joinNames.toString();
@@ -231,7 +250,7 @@ public class SwapTwoNumbers {
 
         // Now, we can apply String methods on it
         char ch = str.charAt(3);
-        System.out.println("Character at index 3: "+ch);
+        System.out.println("Character at index 3: " + ch);
 
         // Adding one more element
         joinNames.add("Sorabh");
@@ -239,59 +258,130 @@ public class SwapTwoNumbers {
 
         // Returns length
         int newLength = joinNames.length();
-        System.out.println("New Length: "+newLength);
+        System.out.println("New Length: " + newLength);
 
-        List<String> valuesList = Arrays. asList("value1", "value2", "value3");
+        List<String> valuesList = Arrays.asList("value1", "value2", "value3");
         String commaSeparatedValues = String.join("; ", valuesList);
-        System. out. println(commaSeparatedValues);
+        System.out.println(commaSeparatedValues);
     }
 
 
-    void a(){
+    void a() {
         int c = 0, a, temp;
         int n = 153;
         temp = n;
-        while(n>3){
-            a= n%10;
-            n = n/10;
-            c = c + (a*a*a);
+        while (n > 3) {
+            a = n % 10;
+            n = n / 10;
+            c = c + (a * a * a);
         }
 
-        if(temp == c) System.out.println("Armstrong number");
+        if (temp == c) System.out.println("Armstrong number");
     }
 
-    void b(){
-        int a, b =0, c=1;
+    void b() {
+        int a, b = 0, c = 1;
         Scanner in = new Scanner(System.in);
         int num = in.nextInt();
-        for(int i = 0; i < num; i++){
+        for (int i = 0; i < num; i++) {
             a = b;
             b = c;
-            c = a +b;
+            c = a + b;
             System.out.print(c + " ");
         }
     }
+
     //Java Lambda Expression Example: No Parameter
-    static void say(){
-        Sayable s=()->{ return "hi";};
+    static void say() {
+        Sayable s = () -> {
+            return "hi";
+        };
         System.out.println(s.say());
 
         // Multiple parameters in lambda expression
-        Addable ad1=(a,b)->(a+b);
-        System.out.println(ad1.add(10,20));
+        Addable ad1 = (a, b) -> (a + b);
+        System.out.println(ad1.add(10, 20));
 
         // Multiple parameters with data type in lambda expression
-        Addable ad2=(int a,int b)->(a+b);
-        System.out.println(ad2.add(100,200));
+        Addable ad2 = (int a, int b) -> (a + b);
+        System.out.println(ad2.add(100, 200));
 
 
     }
-    
+
+    public static int[] sortInDescendingOrderArrayAlgorithm(int[] array) { //sort in descending order
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if (array[i] >= array[j]) {
+                    int x = array[i];
+                    array[i] = array[j];
+                    array[j] = x;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(array));
+        return array;
+    }
+
+    public static int[] sortInAscendingOrderArrayAlgorithm(int[] array) { //sort in ascending order
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if (array[i] < array[j]) {
+                    int x = array[j];
+                    array[j] = array[i];
+                    array[i] = x;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(array));
+        return array;
+    }
+
+    public static int reduceMethod(int[] array) {
+        int sum = Arrays.stream(array).reduce(0, (a, b) -> a + b);
+        System.out.println(sum);
+
+        int result = Arrays.stream(array).reduce(0, Integer::sum);
+        assert result == 29;
+
+        List<Integer> ages = Arrays.asList(25, 30, 45, 28, 32);
+        int computedAges = ages.parallelStream().reduce(0, (a, b) -> a + b, Integer::sum);
+//        When a stream executes in parallel, the Java runtime splits the stream into multiple substreams.
+//        In such cases, we need to use a function to combine the results of the substreams into a single one.
+//        This is the role of the combiner — in the above snippet, it’s the Integer::sum method reference.
+
+        List<String> words = Arrays.asList("GFG", "Geeks", "for", "GeeksQuiz", "GeeksforGeeks");
+        // The result of the reduce() method is an Optional because the list on which
+        // reduce() is called may be empty.
+        Optional<String> longestString = words.stream().reduce((word1, word2)
+                -> word1.length() > word2.length() ? word1 : word2);
+        // Displaying the longest String
+        longestString.ifPresent(System.out::println);
+
+//        For instance, we can use reduce() on an array of String elements and join them into a single result:
+        List<String> letters = Arrays.asList("a", "b", "c", "d", "e");
+        String resu = letters.stream().reduce("", (partialString, element) -> partialString + element);
+//        assertThat(result).isEqualTo("abcde");
+//        Similarly, we can switch to the version that uses a method reference:
+
+        String resul = letters.stream().reduce("", String::concat);
+//        Let’s use the reduce () operation for joining the uppercase elements of the letters array:
+
+        String res = letters.stream().reduce(
+                        "", (partialString, element) -> partialString.toUpperCase() + element.toUpperCase());
+//        assertThat(result).isEqualTo("ABCDE");
+//        In addition, we can use reduce() in a parallelized stream (more on this later):
+
+        return sum;
+    }
+
 }
-interface Addable{
-    int add(int a,int b);
+
+interface Addable {
+    int add(int a, int b);
 }
-interface Sayable{
+
+interface Sayable {
     public String say();
 }
 
