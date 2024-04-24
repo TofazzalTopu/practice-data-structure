@@ -25,19 +25,14 @@ public class SortArrayListOfIntegerUsingStream {
 //      numbers.forEach(System.out::println);
 
         // 2. Stream.sorted() - natural order
-        List<Integer> sortedNumbers = numbers
-                .stream()
-                .sorted()
-                .collect(Collectors.toList());
+        List<Integer> sortedNumbers = numbers.stream().sorted().collect(Collectors.toList());
 
         // 2.1 print to console
         System.out.println("\n2. Natural order of " + "ArrayList<Integer> :- \n");
         sortedNumbers.forEach(System.out::println);
 
         // 3.  Stream.sorted() - reverse order
-        List<Integer> reverseSortedNumber = numbers
-                .stream()
-                .sorted(Comparator.reverseOrder())
+        List<Integer> reverseSortedNumber = numbers.stream().sorted(Comparator.reverseOrder())
                 .collect(Collectors.toList());
 
         // 3.1 print to console
