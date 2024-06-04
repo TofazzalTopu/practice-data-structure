@@ -1,14 +1,12 @@
 package com.example.practice.OnlineTest;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Test {
 
    public static void mainnn(String[] args) {
+
       String input = "This is for your reference";
       StringBuffer sb = new StringBuffer();
 
@@ -27,6 +25,11 @@ public class Test {
    }
 
    public static void main(String[] args) {
+      List<String> myList = Arrays.asList("apple", "banana", "orange", "grape", "kiwi");
+      Map<Integer, List<String>> groupedByLength = myList.stream().collect(Collectors.groupingBy(String::length));
+      // Result: {5=[apple, grape], 6=[banana], 7=[orange], 4=[kiwi]}
+      System.out.println("groupedByLength: "+ groupedByLength);
+
       String input = "This is for your reference";
       StringBuffer sb = new StringBuffer();
 
