@@ -1,10 +1,10 @@
-package com.example.practice;
+package com.example.practice.datastructure.model.arrayList;
 
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class Test {
+public class MapArrayTest {
 
     public static void main(String[] args) {
         String votes[] = {"john", "johnny", "jackie", "johnny", "john", "jackie", "jamie", "jamie", "john", "johnny", "jamie", "johnny", "john"};
@@ -23,6 +23,7 @@ public class Test {
 
         Map<String, Long> map = Arrays.stream(votes).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
+        List<Long> numberss = new ArrayList<>(map.values());
         List<Long> numbers = map.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList());
         Long maxNumber = map.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList()).stream().max(Comparator.naturalOrder()).get();
         Set<Map.Entry<String, Long>> collect = map.entrySet().stream().filter(e -> Objects.equals(e.getValue(), maxNumber)).collect(Collectors.toSet());
