@@ -22,16 +22,22 @@ public class RestTemplateController {
         user.setId(1L);
         user.setName("Md Rana");
         user.setLastName("Rana");
+        try {
 
+            RestTemplate restTemplate = new RestTemplate();
+            URI uri = new URI("http://localhost:8082/users/");
+            StringBuffer sb = new StringBuffer();
+            StringBuffer sb1 = new StringBuffer();
+            String s = sb.toString().replaceAll("", "");
+            sb1.append(s);
 
-        RestTemplate restTemplate = new RestTemplate();
-        URI uri = new URI("http://localhost:8081/users/");
-
-
-        ResponseEntity<UserDTO> result = restTemplate.postForEntity(uri, user, UserDTO.class);
-        System.out.println(result);
+            ResponseEntity<UserDTO> result = restTemplate.postForEntity(uri, user, UserDTO.class);
+            System.out.println(result);
 //        Assertions.assertEquals(201, result.getStatusCodeValue());
 //        Assertions.assertNotNull(result.getBody().getId());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 }
