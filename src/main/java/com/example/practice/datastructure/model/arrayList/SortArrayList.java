@@ -51,6 +51,8 @@ public class SortArrayList {
         // -2
         List<Player> sortByScore = playerList.stream().sorted(Comparator.comparing(Player::getScore).reversed()).collect(Collectors.toList());
         // -3
+//        List<Player> sortByName =
+//         playerList.stream().map(Player::getName).sorted().collect(Collectors.toList());
         List<Player> sortByName = playerList.stream().sorted(Comparator.comparing(Player::getName)).collect(Collectors.toList());
         List<Player> sortByNames = playerList.stream().sorted(Comparator.comparing(Player::getName).thenComparing(Player::getScore)).collect(Collectors.toList());
         System.out.println(sortByScore);

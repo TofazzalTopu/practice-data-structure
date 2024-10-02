@@ -34,16 +34,16 @@ public class MultiplyMatrix {
             return;
         }
 
-        // Matrix to store the result
-        // The product matrix will
-        // be of size row1 x col2
+        // Matrix to store the result. The product matrix will be of size row1 x col2
         int C[][] = new int[row1][col2];
 
         // Multiply the two matrices
         for (i = 0; i < row1; i++) {
             for (j = 0; j < col2; j++) {
-                for (k = 0; k < row2; k++)
+                for (k = 0; k < row2; k++) {
                     C[i][j] += A[i][k] * B[k][j];
+                    System.out.println(A[i][k] + "  " + B[k][j]);
+                }
             }
         }
 

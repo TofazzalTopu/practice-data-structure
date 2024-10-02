@@ -1,5 +1,7 @@
 package com.example.practice.datastructure.model.string;
 
+import org.apache.commons.text.WordUtils;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -22,6 +24,9 @@ public class SwapTwoNumbers {
         sortInDescendingOrderArrayAlgorithm(new int[]{3, 4, 2, 7, 9, 4});
         sortInAscendingOrderArrayAlgorithm(new int[]{3, 4, 2, 7, 9, 4});
         reduceMethod(new int[]{3, 4, 2, 7, 9, 4});
+        reverseString("poiuy");
+        reverseString("this is my wolrd");
+        firstLetterUpperCase("this is my wolrd");
         say();
 
     }
@@ -368,11 +373,40 @@ public class SwapTwoNumbers {
 //        Let’s use the reduce () operation for joining the uppercase elements of the letters array:
 
         String res = letters.stream().reduce(
-                        "", (partialString, element) -> partialString.toUpperCase() + element.toUpperCase());
+                "", (partialString, element) -> partialString.toUpperCase() + element.toUpperCase());
 //        assertThat(result).isEqualTo("ABCDE");
 //        In addition, we can use reduce() in a parallelized stream (more on this later):
 
         return sum;
+    }
+
+    public static String reverseString(String str) {
+        StringBuilder sb = new StringBuilder();
+        sb.reverse();
+        String ar[] = str.split("");
+
+        for (int i = ar.length - 1; i >= 0; i--) {
+            sb.append(ar[i]);
+        }
+        System.out.println(sb);
+        return sb.toString();
+    }
+
+    public static String firstLetterUpperCase(String str) {
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sbb = new StringBuilder(str);
+        String ar[] = sbb.reverse().toString().split(" ");
+        for (String s : ar) {
+            String d = WordUtils.swapCase(s); //lower to upper and vice-versa
+            //1
+//            sb.append(s.substring(0, 1).toUpperCase()).append(s.substring(1)).append(" ");
+            //2
+            sb.append(WordUtils.capitalize(s)).append(" "); // capitalise first character of each word
+        }
+        System.out.println(str.replace("t", "T"));
+        System.out.println(sb.insert(4, 1));
+        System.out.println(sb.replace(4, 8, "HI")); //replace start to end with specified string
+        return sb.toString();
     }
 
 }

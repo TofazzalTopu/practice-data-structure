@@ -1,12 +1,28 @@
-package com.example.practice.datastructure.model.arrayList;
+package com.example.practice;
 
+import lombok.extern.slf4j.Slf4j;
+
+import java.lang.reflect.Array;
 import java.util.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class MapArrayTest {
+@Slf4j
+public class Test {
 
     public static void main(String[] args) {
+
+    ArrayList<String> strings = new ArrayList<>();
+    String[] a = {"d"};
+    strings.addAll(Arrays.asList(a));
+    strings.get(0).set
+    log.debug("err");
+    log.trace("deb");
+    log.info("tr");
+    log.error("info");
+    f(2.3f);
         String votes[] = {"john", "johnny", "jackie", "johnny", "john", "jackie", "jamie", "jamie", "john", "johnny", "jamie", "johnny", "john"};
         String vote[] = {"virat", "rohit", "rishabh", "rohit", "virat", "rohit"};
         String str = findNames(votes);
@@ -23,7 +39,6 @@ public class MapArrayTest {
 
         Map<String, Long> map = Arrays.stream(votes).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-        List<Long> numberss = new ArrayList<>(map.values());
         List<Long> numbers = map.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList());
         Long maxNumber = map.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList()).stream().max(Comparator.naturalOrder()).get();
         Set<Map.Entry<String, Long>> collect = map.entrySet().stream().filter(e -> Objects.equals(e.getValue(), maxNumber)).collect(Collectors.toSet());
@@ -40,7 +55,7 @@ public class MapArrayTest {
     //ArrayList
     public static String findNames(List<String> votes) {
         Map<String, Integer> map = new TreeMap<>();
-        new HashSet<>(votes).forEach(s-> map.put(s, Collections.frequency(votes, s)));
+        new HashSet<>(votes).forEach(s -> map.put(s, Collections.frequency(votes, s)));
 //        Map<String, Integer> map = new HashMap<>();
 //        for (int i = 0; i < votes.length; i++) {
 //            if (!map.containsKey(votes[i])) {
@@ -75,5 +90,20 @@ public class MapArrayTest {
         assert str.equals("johnny john ") : "jhbv";
 //        Assert.hasText();
     }
+
+    private double whtsi;
+
+    private static Double mm(ExecutorService executorService, Callable<Double> task) {
+            try{
+                return executorService.submit(task).get();
+            } catch (Exception e){
+                return null;
+            }
+    }
+
+    public static void f(float f){
+        System.out.println(f);
+    }
+
 
 }
