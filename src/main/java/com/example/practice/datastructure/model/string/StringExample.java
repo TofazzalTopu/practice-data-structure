@@ -22,6 +22,9 @@ public class StringExample {
 //        assertEquals("ABCDEF", getUniqueCharacterSubstring("AABCDEF"));
         getUniqueCharacterSubstring("ADABCDEF");
         getUniqueCharacterSubstringBruteForce("abcabcbb");
+        System.out.println();
+        test();
+
     }
 
     static String getUniqueCharacterSubstringBruteForce(String input) {
@@ -84,5 +87,15 @@ public class StringExample {
                     res = Math.max(res, j - i + 1);
         return res;
     }
+
+    public static void test(){
+//        for(int i = 1; i <= 3; i++){
+//            System.out.println(i++);
+//        }
+
+
+    }
+
+
 
 }

@@ -2,6 +2,8 @@ package com.example.practice.datastructure.model.string;
 
 //Q #8) Write a Java Program to find whether a string or number is palindrome or not.
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.Scanner;
 
 public class Palindrome {
@@ -11,6 +13,7 @@ public class Palindrome {
 
     }
 
+    @Autowired
     public static void checkIfPalindrome(String original) {
         String reverse = "";
         int length = original.length();
