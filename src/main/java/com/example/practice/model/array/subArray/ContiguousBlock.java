@@ -1,4 +1,4 @@
-package com.example.practice.model.array;
+package com.example.practice.model.array.subArray;
 
 import java.util.*;
 import java.util.stream.IntStream;
@@ -42,9 +42,7 @@ Thus, we print  on a new line.
 public class ContiguousBlock {
 
     public static void main(String[] args) {
-        int arr[] = {1, -2, 4, -5, 1};
         printNumberOfNegativeSubarrays();
-        contiguiousSubArrays(arr, 3);
         countBlock();
     }
 
@@ -81,29 +79,8 @@ public class ContiguousBlock {
                 if (sum < 0) count++;
             }
         }
-        System.out.println("Total Count" + count);
+        System.out.println("Total Count " + count);
         return count;
     }
 
-    public static void contiguiousSubArrays(int arr[], int targetSum) {
-        Map<Integer, List<Integer>> map = new TreeMap<>();
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 1; j < arr.length; j++) {
-                int sum = 0;
-                List<Integer> integerList = new ArrayList<>();
-                for (int k = i; k <= j; k++) {
-//                    System.out.print(arr[k] + " ");
-                    sum += arr[k];
-                    integerList.add(arr[k]);
-                }
-                if (sum == targetSum) {
-                    System.out.println(sum + " " + integerList);
-                    return;
-                }
-                map.put(sum, integerList);
-                System.out.println();
-            }
-        }
-        System.out.println(map);
-    }
 }

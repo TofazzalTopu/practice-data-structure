@@ -34,6 +34,7 @@ public class RemoveDuplicateElements {
         for (int i = 0; i < j; i++) {
             System.out.print(a[i] + " ");
         }
+        System.out.println();
     }
 
     public static void main(String[] args) {

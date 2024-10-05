@@ -1,9 +1,6 @@
-package main.java.strings;
+package com.example.practice.model.string;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class StringExample {
 
@@ -14,9 +11,8 @@ public class StringExample {
 //        System.out.println("The input string is " + str);
 
 //          First Answer
-//        int len = longestUniqueSubsttr(str);
-//        System.out.println("The length of the longest non-repeating character "
-//                + "substring is " + len);
+        int len = longestUniqueSubString(str);
+        System.out.println("The length of the longest non-repeating character " + "substring is " + len);
 
         //Second answer
 //        assertEquals("ABCDEF", getUniqueCharacterSubstring("AABCDEF"));
@@ -41,7 +37,7 @@ public class StringExample {
                 output = input.substring(start, end);
             }
         }
-        System.out.println(output);
+        System.out.println("getUniqueCharacterSubstringBruteForce: " + output);
         return output;
     }
 
@@ -58,7 +54,7 @@ public class StringExample {
             }
             visited.put(currChar, end);
         }
-        System.out.println(output);
+        System.out.println("getUniqueCharacterSubstring: " + output);
         return output;
     }
 
@@ -67,22 +63,44 @@ public class StringExample {
         // Note : Default values in visited are false
         boolean[] visited = new boolean[256];
         for (int k = i; k <= j; k++) {
-            if (visited[str.charAt(k)] == true)
-                return false;
+            if (visited[str.charAt(k)] == true) return false;
             visited[str.charAt(k)] = true;
         }
         return true;
     }
 
     // Returns length of the longest substring with all distinct characters.
-    public static int longestUniqueSubsttr(String str) {
+    public static int longestUniqueSubString(String str) {
         int n = str.length();
         int res = 0;
-        for (int i = 0; i < n; i++)
-            for (int j = i; j < n; j++)
-                if (areDistinct(str, i, j))
-                    res = Math.max(res, j - i + 1);
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                //1st
+                String subStr = str.substring(i, j);
+//                if (areDistinct(str, i, j)) {
+//                    res = Math.max(res, j - i + 1);
+//                }
+                //2nd
+                if (length(subStr)) {
+                    res = Math.max(res, subStr.length());
+                }
+                //3
+                int ln = (int) Arrays.stream(subStr.split("")).distinct().count();
+                if(subStr.length() == ln) res = Math.max(res, ln);
+                subStr.contains("ghfh");
+            }
+        }
         return res;
+    }
+
+    static boolean length(String str) {
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i < str.length(); i++) {
+            if (!set.add(String.valueOf(str.charAt(i)))) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

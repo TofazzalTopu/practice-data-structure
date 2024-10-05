@@ -25,6 +25,7 @@ public class ManipulateMapBasedOnValue {
         }).collect(Collectors.toList());
         StringJoiner j = new StringJoiner(",");
         String joined = String.join(" and ", employeeList.stream().map(Employee::getName).collect(Collectors.toList()));
+        String joine = employeeList.stream().map(Employee::getName).collect(Collectors.joining(" and "));
         System.out.println(employeeList);
     }
 

@@ -87,7 +87,6 @@ public class SortArrayList {
                 break;
             }
             min++;
-
         }
         if (minNumber == 0) {
             minNumber = max + 1;
