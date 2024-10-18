@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>Practice</artifactId>
+    <artifactId>practice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Practice</name>
     <description>Practice</description>
@@ -93,6 +93,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>${artifactId}</finalName>
     </build>
 
 </project>
