@@ -1,4 +1,4 @@
-package com.example.practice;
+package com.example.practice.OnlineTest;
 
 import org.springframework.stereotype.Service;
 

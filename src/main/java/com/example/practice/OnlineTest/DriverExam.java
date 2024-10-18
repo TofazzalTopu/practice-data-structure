@@ -1,4 +1,4 @@
-package com.example.practice.web.controller;
+package com.example.practice.OnlineTest;
 
 public class DriverExam {
 

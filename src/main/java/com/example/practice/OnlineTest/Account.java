@@ -1,4 +1,4 @@
-package com.example.practice;
+package com.example.practice.OnlineTest;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

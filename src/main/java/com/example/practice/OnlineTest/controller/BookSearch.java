@@ -1,4 +1,4 @@
-package com.example.practice.web.controller;
+package com.example.practice.OnlineTest.controller;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.*;
