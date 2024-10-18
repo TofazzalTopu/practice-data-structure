@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment # Kubernetes resource kind we are creating
+metadata:
+  name: practice-data-structure
+spec:
+  selector:
+    matchLabels:
+      app: practice-data-structure
+  replicas: 3 # Number of replicas that will be created for this deployment
+  template:
+    metadata:
+      labels:
+        app: practice-data-structure
+    spec:
+      containers:
+        - name: practice-data-structure
+          image: tofazzal/practice-data-structure.jar:latest
+          # Image that will be used to containers in the cluster
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8761
+# The port that the container is running on in the cluster
+
+---
+apiVersion: v1 # Kubernetes API version
+kind: Service # Kubernetes resource kind we are creating
+metadata: # Metadata of the resource kind we are creating
+  name: practice-data-structure-svc
+spec:
+  selector:
+    app: practice-data-structure
+  ports:
+    - protocol: "TCP"
+      port: 8761 # The port that the service is running on in the cluster
+      targetPort: 8761 # The port exposed by the service
+  type: NodePort # type of the service.
