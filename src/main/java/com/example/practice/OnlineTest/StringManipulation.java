@@ -1,6 +1,5 @@
-package com.example.practice.controller;
+package com.example.practice.OnlineTest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/")
-public class TestController {
+public class StringManipulation {
 
 //@Autowired
 
