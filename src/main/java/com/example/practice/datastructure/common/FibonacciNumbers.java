@@ -6,13 +6,12 @@ public class FibonacciNumbers {
         for (int i = 0; i < n; i++) {
             System.out.print(fibonacci_numbers(i) + " ");
         }
+        System.out.println();
         printFibonacciNumbers(7);
     }
     public static int fibonacci_numbers(int n) {
-        if (n == 0) {
-            return 0;
-        } else if (n == 1) {
-            return 1;
+        if (n == 0 || n == 1) {
+            return n;
         } else {
             return fibonacci_numbers(n - 2) + fibonacci_numbers(n - 1);
         }
@@ -30,5 +29,6 @@ public class FibonacciNumbers {
             f1 = f2;
             f2 = next;
         }
+        System.out.println();
     }
 }

@@ -1,5 +1,11 @@
 package com.example.practice.datastructure.model.array;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class SmallestMissingPositiveNumber {
 
     /* Utility function that puts all non-positive
@@ -64,8 +70,34 @@ public class SmallestMissingPositiveNumber {
     // Driver code
     public static void main(String[] args) {
         int arr[] = {0, 10, 2, -10, -20};
+        int[] ar = new int[]{-2, -1, 0, 1, 3, 6, 4, 1, 2};
         int arr_size = arr.length;
-        int missing = findMissing(arr, arr_size);
-        System.out.println("The smallest positive missing number is " + missing);
+//        int missing = findMissing(arr, arr_size);
+//        System.out.println("The smallest positive missing number is " + missing);
+        System.out.println("The smallest positive missing number is " + findMissingPositive(ar));
+    }
+
+
+    public static int findMissingPositive(int[] arr) {
+        List<Integer> list = Arrays.stream(arr).boxed().toList();
+        int smallestPositiveMissing = Integer.MAX_VALUE;
+        int maxValue = 0;
+        int minValue = 0;
+        for (int j = 0; j < arr.length; j++) {
+            if (arr[j] > 0 && arr[j] > maxValue) {
+                maxValue = arr[j];
+            } else if(arr[j] < minValue) {
+                minValue = arr[j];
+            }
+        }
+        int i = minValue; // 0 if positive array element only
+        while (i <= maxValue) {
+            if (i > 0 && !list.contains(i) && i < smallestPositiveMissing) {
+                smallestPositiveMissing = i;
+            }
+            i++;
+        }
+        System.out.println("'smallestPositiveMissing: " + smallestPositiveMissing);
+        return smallestPositiveMissing;
     }
 }
