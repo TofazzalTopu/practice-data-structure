@@ -69,12 +69,13 @@ public class SmallestMissingPositiveNumber {
 
     // Driver code
     public static void main(String[] args) {
-        int arr[] = {0, 10, 2, -10, -20};
+        int arr[] = {1, 0, 3, 10, 2, -10, -20};
         int[] ar = new int[]{-2, -1, 0, 1, 3, 6, 4, 1, 2};
         int arr_size = arr.length;
 //        int missing = findMissing(arr, arr_size);
 //        System.out.println("The smallest positive missing number is " + missing);
         System.out.println("The smallest positive missing number is " + findMissingPositive(ar));
+        findSmallestMissing(arr);
     }
 
 
@@ -86,7 +87,7 @@ public class SmallestMissingPositiveNumber {
         for (int j = 0; j < arr.length; j++) {
             if (arr[j] > 0 && arr[j] > maxValue) {
                 maxValue = arr[j];
-            } else if(arr[j] < minValue) {
+            } else if (arr[j] < minValue) {
                 minValue = arr[j];
             }
         }
@@ -100,4 +101,36 @@ public class SmallestMissingPositiveNumber {
         System.out.println("'smallestPositiveMissing: " + smallestPositiveMissing);
         return smallestPositiveMissing;
     }
+
+    public static void findSmallestMissing(int[] arrr) {
+        int arr[] = {4, 6, 100, 1, 0, 3, 10, 2, 10, 20};
+        int min = arr[0];
+        int max = arr[0];
+        int missing = min;
+        List<Integer> integers = Arrays.stream(arr).boxed().collect(Collectors.toList());
+        for (Integer a : integers) {
+            if (a < min) {
+                min = a;
+            } else if (a > min && a < max) {
+                if (!integers.contains(missing + 1)) {
+                    missing = missing + 1;
+                }
+            } else if (a > max) {
+                max = a;
+            }
+        }
+
+//        for (int i = 0; i < arr.length; i++) {
+//            if (arr[i] < min) {
+//                min = arr[i];
+//            } else if (arr[i] > min && arr[i] < max) {
+//                missing = missing + 1;
+//            } else if (arr[i] > max) {
+//                max = arr[i];
+//            }
+//        }
+
+        System.out.println("min: " + min + " Max: " + max + " Missing: " + missing);
+    }
+
 }
