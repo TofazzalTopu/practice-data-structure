@@ -13,7 +13,9 @@ class Simple {
         System.out.println("Sorting by Name");
 
         Collections.sort(al, new NameComparator());
+        Collections.sort(al, new NameComparator());
         Collections.sort(al, Comparator.comparing(Student::getName));
+//        Collections.sort(al, Comparator.comparing(Student::getName).reversed());
         Iterator itr = al.iterator();
         while (itr.hasNext()) {
             Student st = (Student) itr.next();

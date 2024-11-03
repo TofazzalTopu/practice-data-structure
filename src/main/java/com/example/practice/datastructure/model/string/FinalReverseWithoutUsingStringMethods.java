@@ -1,6 +1,8 @@
 package com.example.practice.datastructure.model.string;
 
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 //Q #1) Write a Java Program to reverse a string without using String inbuilt function.
 public class FinalReverseWithoutUsingStringMethods {
@@ -44,5 +46,12 @@ public class FinalReverseWithoutUsingStringMethods {
             System.out.print(token[i] + "");
         }
         System.out.println("\n");
+    }
+
+    public String firstLetterCapitalWithSingleSpace(final String words) {
+        return Stream.of(words.trim().split("\\s"))
+                .filter(word -> !word.isEmpty())
+                .map(word -> word.substring(0, 1).toUpperCase() + word.substring(1))
+                .collect(Collectors.joining(" "));
     }
 }

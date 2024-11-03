@@ -1,6 +1,10 @@
 package com.example.practice.datastructure.model.array;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 public class RemoveDuplicateElements {
     public static int removeDuplicateElements(int arr[], int n) {
@@ -19,6 +23,13 @@ public class RemoveDuplicateElements {
         for (int i = 0; i < j; i++) {
             arr[i] = temp[i];
         }
+       Arrays.stream(temp).boxed().forEach(e-> System.out.print(e + " "));
+
+        System.out.println();
+        List<Integer> integers =  Arrays.stream(arr).boxed().toList();
+        List<String> valuesList = Arrays.asList("value1", "value2", "value3");
+        String commaSeparatedValues = String.join("; ",  valuesList);
+        System.out.println(commaSeparatedValues);
         return j;
     }
 
@@ -47,5 +58,12 @@ public class RemoveDuplicateElements {
 //         System.out.print(arr[i]+" ");
 
         removeDuplicates(arr, length);
+        System.out.println("Unique elements: " + findUnique(arr));
+    }
+
+    public static Set<Integer> findUnique(int[] arr){
+        Set<Integer> integers = new TreeSet<>();
+        List<Integer> ins = Arrays.stream(arr).boxed().filter(e-> integers.add(e)).collect(Collectors.toList());
+        return integers;
     }
 }

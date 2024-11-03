@@ -2,6 +2,7 @@ package com.example.practice.datastructure.model.array;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.StringJoiner;
 
 public class FindingDuplicate {
 
@@ -16,7 +17,10 @@ public class FindingDuplicate {
             sb.append(str.charAt(i));
          }
       }
+      StringJoiner joiner = new StringJoiner("-");
+      joiner.add(sb);
+
       System.out.println(String.join("-", elements));
-      System.out.println(sb);
+      System.out.println(joiner);
    }
 }
