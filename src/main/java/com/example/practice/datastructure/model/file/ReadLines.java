@@ -14,7 +14,7 @@ public class ReadLines {
    public static void main(String[] args) throws IOException {
 //      File file = new File("/Users/mdtofazzalhossain/Documents/Files/TestDoc.rtf");
       Path path = Path.of("/Users/mdtofazzalhossain/Documents/Files/TestDoc.rtf");
-      List<String> str = Files.readAllLines(path);
+      List<String> lines = Files.readAllLines(path);
 //      System.out.println(Files.readAllLines(path));
 
 //      FileInputStream fileInputStream = new FileInputStream(file);
@@ -28,8 +28,8 @@ public class ReadLines {
       int whiteSpaceCount = 0;
       int sentenceCount = 0;
 
-      for(int i=0; i < str.size(); i++){
-         line = str.get(i);
+      for(int i=0; i < lines.size(); i++){
+         line = lines.get(i);
          characterCount += line.length();
          String words[] = line.split("\\s+");
          wordCount += words.length;
