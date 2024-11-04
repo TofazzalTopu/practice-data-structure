@@ -92,7 +92,7 @@ public class ContiguousBlock {
                 }
                 map.put(sum, integerList);
                 if (sum == targetSum) {
-                    System.out.println(sum + " " + integerList);
+                    System.out.println("Sum: " + sum + "  Array: " + integerList);
                     return;
                 }
                 System.out.println();

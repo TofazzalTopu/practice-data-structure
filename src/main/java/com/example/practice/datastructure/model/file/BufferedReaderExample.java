@@ -17,14 +17,23 @@ public class BufferedReaderExample {
    public static void main(String[] args) throws IOException {
 //      readByReadAllLines();
 //      readFile();
-//      readFileJava8();
-      writeFile();
-
+      readFileJava8();
+//      writeFile();
+      readFilePathByName();
    }
 
+   public static void readFilePathByName() throws IOException {
+      File file = new File("Dockerfile");
+      String path = file.getAbsolutePath();
+      System.out.println("getAbsolutePath Dockerfile path: " + path);
+      System.out.println("getAbsolutePath application.properties path: " + new File("application.properties").getAbsolutePath());
+      System.out.println("test.txt path: " + new File("test.txt").getAbsolutePath());
+      System.out.println("test.txt getCanonicalPath path: " + new File("test.txt").getCanonicalPath());
+   }
    private static void readFileJava8()  throws IOException {
       StringBuilder sb = new StringBuilder();
-      Path path = Paths.get(FILE_PATH);
+//      Path path = Paths.get(FILE_PATH);
+      Path path = Paths.get("Dockerfile");
       String fileContent = Files.readString(path);
       System.out.println(fileContent);
    }
