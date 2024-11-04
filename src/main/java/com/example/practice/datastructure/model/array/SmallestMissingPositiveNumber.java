@@ -1,10 +1,7 @@
 package com.example.practice.datastructure.model.array;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class SmallestMissingPositiveNumber {
 
@@ -75,7 +72,7 @@ public class SmallestMissingPositiveNumber {
 //        int missing = findMissing(arr, arr_size);
 //        System.out.println("The smallest positive missing number is " + missing);
         System.out.println("The smallest positive missing number is " + findMissingPositive(ar));
-        findSmallestMissing(arr);
+        findSmallestMissingNumber(arr);
     }
 
 
@@ -102,33 +99,19 @@ public class SmallestMissingPositiveNumber {
         return smallestPositiveMissing;
     }
 
-    public static void findSmallestMissing(int[] arrr) {
-        int arr[] = {4, 6, 100, 1, 0, 3, 10, 2, 10, 20};
-        int min = arr[0];
-        int max = arr[0];
-        int missing = min;
-        List<Integer> integers = Arrays.stream(arr).boxed().collect(Collectors.toList());
-        for (Integer a : integers) {
-            if (a < min) {
-                min = a;
-            } else if (a > min && a < max) {
-                if (!integers.contains(missing + 1)) {
-                    missing = missing + 1;
-                }
-            } else if (a > max) {
-                max = a;
+    public static void findSmallestMissingNumber(int[] arrr) {
+        int arr[] = {4, 6, 2, 100, 1, 0, 8, 10, 9, 10, 20};
+        List<Integer> integers = Arrays.stream(arr).sorted().boxed().toList();
+        int min = integers.get(0);
+        int max = integers.get(integers.size() -1);
+        int missing = Integer.MAX_VALUE;
+        int i = min;
+        while (i <= max){
+            if (!integers.contains(i)) {
+                if(i < missing) missing = i;
             }
+            i++;
         }
-
-//        for (int i = 0; i < arr.length; i++) {
-//            if (arr[i] < min) {
-//                min = arr[i];
-//            } else if (arr[i] > min && arr[i] < max) {
-//                missing = missing + 1;
-//            } else if (arr[i] > max) {
-//                max = arr[i];
-//            }
-//        }
 
         System.out.println("min: " + min + " Max: " + max + " Missing: " + missing);
     }
