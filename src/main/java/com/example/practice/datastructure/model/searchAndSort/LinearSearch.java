@@ -13,8 +13,7 @@ public class LinearSearch {
             if (arr[i] == item) {
                 flag = i + 1;
                 break;
-            } else
-                flag = 0;
+            }
         }
         if (flag != 0) {
             System.out.println("Item found at location " + flag);

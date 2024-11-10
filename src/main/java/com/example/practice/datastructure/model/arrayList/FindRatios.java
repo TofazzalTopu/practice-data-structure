@@ -11,9 +11,9 @@ import java.util.concurrent.atomic.AtomicReference;
 public class FindRatios {
 
    public static void main(String[] args) {
-//      lonelyInteger();
-      //      miniMaxSum();
-      //      plusMinus();
+      lonelyInteger();
+            miniMaxSum();
+            plusMinus();
       diagonalDifference();
    }
 
@@ -66,6 +66,12 @@ public class FindRatios {
       // Write your code here
       List<Integer> list = List.of(1, 2, 3, 4, 3, 2, 1);
       ArrayList<Integer> arr = new ArrayList<Integer>(list);
+
+      arr.forEach(c -> {
+         if(Collections.frequency(arr, c) == 1){
+            System.out.println("lonelyInteger: " + c);
+         }
+      });
       Collections.sort(arr);
       int n = arr.size();
       long min = 0;

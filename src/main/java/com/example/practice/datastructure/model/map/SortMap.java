@@ -9,6 +9,7 @@ public class SortMap {
     public static void main(String[] args) {
         sorMapByKey();
         sorMapByValue();
+        mapExample();
     }
 
     public static void sorMapByKey() {
@@ -31,6 +32,22 @@ public class SortMap {
         System.out.println("Sorted by key: " + sortedByKey);
     }
 
+    public static void mapExample(){
+        Map<String, Integer> map = new HashMap<>();
+        StringBuilder sb = new StringBuilder();
+        sb.append("apple");
+        map.put(sb.toString(), 1);
+
+        sb.append("orange");
+        map.put(sb.toString(), 2);
+
+        sb.append("banana");
+        map.put(sb.toString(), 3);
+        
+        sb.append("grape");
+        map.put(sb.toString(), 4);
+        map.entrySet().forEach(e-> System.out.println(e.getKey() + " " + e.getValue()));
+    }
     public static void sorMapByValue() {
         Map<String, Integer> map = new HashMap<>();
         map.put("apple", 3);

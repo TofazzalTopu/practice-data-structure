@@ -49,7 +49,7 @@ public final class Example {
 
    public static void main(String[] args) {
       Example e = new Example(1L, "a");
-      Example e1 = new Example(1L, "a");
+      Example e1 = new Example(1L, "b");
       log.info("{}", e.equals(e1));
    }
 }

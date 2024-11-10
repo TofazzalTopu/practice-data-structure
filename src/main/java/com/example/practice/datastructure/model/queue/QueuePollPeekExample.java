@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
 public class QueuePollPeekExample {
 
    public static void main(String args[]) {
-      PriorityQueue<String> queue = new PriorityQueue<String>();
+      PriorityQueue<String> queue = new PriorityQueue<>();
       queue.add("Amit");
       queue.offer("Vijay");
       queue.add("Karan");
