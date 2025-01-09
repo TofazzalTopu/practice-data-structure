@@ -22,23 +22,25 @@ public class CompletableFutureExample {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         //========================================================================================================
-//        CompletableFutureExample completableFutureExample = new CompletableFutureExample();
-//        CompletableFuture<Void> completableFuture = completableFutureExample.performAsyncTaskWithCompletionTracking();
-//        completableFuture.join();
-//        System.out.println(completableFuture.thenRun(() -> System.out.println("Task completed successfully")));
-//        completableFuture.thenAccept(result -> System.out.println("Result: " + result));
-//        System.out.println(completableFuture.isDone());
+        CompletableFutureExample completableFutureExample = new CompletableFutureExample();
+        CompletableFuture<Void> completableFuture = completableFutureExample.performAsyncTaskWithCompletionTracking();
+        completableFuture.join();
+        System.out.println(completableFuture.thenRun(() -> System.out.println("Task completed successfully")));
+        completableFuture.thenAccept(result -> System.out.println("Result: " + result));
+        System.out.println(completableFuture.isDone());
 
         CompletableFutureService completableFutureService = new CompletableFutureService();
+        System.out.println("First end\n");
         //========================================================================================================
-//        System.out.println("Requesting data...");
-//        CompletableFuture<String> future = asyncService.fetchDataAsync1();
-//
-//        // Handle the result when the async task completes
-//        System.out.println(future.get());
-//        future.thenAccept(result -> System.out.println("Result: " + result));
-//        // Do other work while waiting for the async task
-//        System.out.println("Doing other work...");
+        System.out.println("Requesting data...");
+        CompletableFuture<String> future = completableFutureService.fetchDataAsync1();
+
+        // Handle the result when the async task completes
+        System.out.println(future.get());
+        future.thenAccept(result -> System.out.println("Result: " + result));
+        // Do other work while waiting for the async task
+        System.out.println("Doing other work...");
+        System.out.println("Second end\n");
 
         //========================================================================================================
         CompletableFuture<String> newFuture = completableFutureService.fetchDataAsync()
@@ -49,14 +51,15 @@ public class CompletableFutureExample {
         newFuture.get();
         newFuture.thenAccept(result -> System.out.println("Result: " + result));
         System.out.println(newFuture.isDone());
+        System.out.println("Third end\n");
 
         //========================================================================================================
-        CompletableFuture<String> future = completableFutureService.fetchDataWithError()
+        CompletableFuture<String> fourthFuture = completableFutureService.fetchDataWithError()
                 .exceptionally(ex -> "Error handled: " + ex.getMessage());
 
-        future.thenAccept(result -> System.out.println("Result: " + result));
+        fourthFuture.thenAccept(result -> System.out.println("Result: " + result));
         System.out.println("Doing other work...");
-
+        System.out.println("Fourt end\n");
         //========================================================================================================
 
 
