@@ -1,4 +1,4 @@
-package com.example.practice.datastructure.model.bubbleSort;
+package com.example.practice.datastructure.model.sorting.bubbleSort;
 
 import java.io.BufferedReader;
 import java.io.IOException;
