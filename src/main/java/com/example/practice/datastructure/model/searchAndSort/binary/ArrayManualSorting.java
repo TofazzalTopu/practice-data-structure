@@ -23,7 +23,7 @@ public class ArrayManualSorting {
                     arrr[j] = temp;
                 }
             }
-            // System.out.println(arr[i]);
+//             System.out.println(arrr[i]);
         }
         System.out.println("Array elements after descending sorting:" + Arrays.toString(arrr));
 
@@ -72,6 +72,6 @@ public class ArrayManualSorting {
             }
         }
 
-        System.out.println("Array elements after sorting:" + Arrays.toString(arr));
+        System.out.println("Array elements after sorting In a Single Loop:" + Arrays.toString(arr));
     }
 }
