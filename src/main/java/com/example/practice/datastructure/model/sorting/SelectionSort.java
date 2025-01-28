@@ -24,12 +24,12 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-        // Example array
-        int[] arr = {5, 1, 12, -5, 16, 2, 12, 14};
+        int[] arr = {5, 1, 12, -5, 16, 0, 2, 12, 14};
         System.out.println("Before Selection sort:");
         for (int num : arr) {
             System.out.print(num + " ");
         }
+        System.out.println();
         // Sort the array using the selection sort
         selectionSort(arr);
         // Print the sorted array
@@ -37,5 +37,6 @@ public class SelectionSort {
         for (int num : arr) {
             System.out.print(num + " ");
         }
+        System.out.println();
     }
 }
