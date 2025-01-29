@@ -21,16 +21,18 @@ public class StreamExample {
         // Accumulate names into a TreeSet
         Set<String> set = people.stream().map(Person::getName).collect(Collectors.toCollection(TreeSet::new));
         // Convert elements to strings and concatenate them, separated by commas
+        List<String> things = Arrays.asList("foo", "bar", "baz");
          String joined = things.stream().map(Object::toString).collect(Collectors.joining(", "));
         // Compute sum of salaries of employee
         List<Employee> employees = new ArrayList<>();
-         int total = employees.stream().collect(Collectors.summingInt(Employee::getSalary)));
+         double total = employees.stream().collect(Collectors.summingDouble(Employee::getSalary));
         // Group employees by department
          Map<Department, List<Employee>> byDept = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment));
         // Compute sum of salaries by department
-         Map<Department, Integer> totalByDept = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.summingInt(Employee::getSalary)));
+         Map<Department, Double> totalByDept = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.summingDouble(Employee::getSalary)));
 //         Partition students into passing and failing
-        Map<Boolean, List<Student>> passingFailing =  students.stream().collect(Collectors.partitioningBy(s -> s.getGrade() >= PASS_THRESHOLD));
+        List<Student> students = new ArrayList<>();
+        Map<Boolean, List<Student>> passingFailing =  students.stream().collect(Collectors.partitioningBy(s -> s.getAge() >= 18));
 //    Since: 1.8
     }
 
@@ -77,6 +79,6 @@ public class StreamExample {
         //finding the max age
         int maxAge = personList.stream().collect(Collectors.summarizingInt(Person::getAge)).getMax();
         System.out.println("Max Age " + maxAge);
-
+    }
 
 }

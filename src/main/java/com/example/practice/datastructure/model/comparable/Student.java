@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 
-class Student implements Comparable<Student> {
+public class Student implements Comparable<Student> {
     int rollno;
     String name;
     int age;
