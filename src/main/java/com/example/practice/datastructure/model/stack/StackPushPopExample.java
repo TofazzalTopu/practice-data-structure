@@ -48,7 +48,7 @@ public class StackPushPopExample {
    }
 
    static void pushelmnt(Stack stk, int x) { //performing push operation
-      stk.push(new Integer(x)); //invoking push() method
+      stk.push(x); //invoking push() method
       System.out.println("push -> " + x);
       System.out.println("stack: " + stk); //prints modified stack
    }

@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -49,9 +50,10 @@ public class ProductService {
         List<Product> products = new ArrayList<>();
         for (int i = 0; i <= 500000; i++) {
             Product product = new Product();
-            product.setId((long) i);
+//            product.setId((long) i);
             product.setName("Product " + i);
             product.setDescription("Description " + i);
+            product.setCreateDate(new Date());
             products.add(product);
         }
         return productRepository.saveAll(products);

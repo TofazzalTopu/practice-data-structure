@@ -39,7 +39,7 @@ public class MatrixProblems {
             }
         }
         //2
-        List<Integer> ints = matrix.stream().flatMap(e -> e.stream()).map(Integer::new).collect(Collectors.toList());
+        List<Integer> ints = matrix.stream().flatMap(e -> e.stream()).collect(Collectors.toList());
         int sum = integers.stream().mapToInt(Integer::intValue).sum();
 //        int sum = 0;
         Collections.sort(integers);
